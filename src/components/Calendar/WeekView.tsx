@@ -8,9 +8,15 @@ interface WeekViewProps {
   weekDays: Date[];
   timeSlots: string[];
   events: Event[];
+  handleOpenDialog: (data: Event | null, type: string) => void;
 }
 
-const WeekView = ({ weekDays, timeSlots, events }: WeekViewProps) => {
+const WeekView = ({
+  weekDays,
+  timeSlots,
+  events,
+  handleOpenDialog,
+}: WeekViewProps) => {
   // Calculate column width
   const colWidth = `calc(100% / ${weekDays.length})`;
 
@@ -195,6 +201,7 @@ const WeekView = ({ weekDays, timeSlots, events }: WeekViewProps) => {
                     event={positionedEvent}
                     day={day}
                     timeSlots={timeSlots}
+                    handleOpenDialog={handleOpenDialog}
                   />
                 ))}
               </Box>

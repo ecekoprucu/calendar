@@ -118,6 +118,7 @@ export const CalendarProvider = ({ children }: { children: ReactNode }) => {
       ...event,
       id: uuidv4(),
     };
+
     setEvents((prevEvents) => [...prevEvents, newEvent]);
   }, []);
 

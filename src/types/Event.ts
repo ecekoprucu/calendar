@@ -3,7 +3,6 @@ export interface Event {
   title: string;
   start: Date;
   end: Date;
-  color?: string;
+  color: string;
   description?: string;
-  location?: string;
 }

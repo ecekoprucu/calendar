@@ -11,8 +11,14 @@ import {
 import { ChevronLeft, ChevronRight, Add, Today } from "@mui/icons-material";
 import { format, isSameDay } from "date-fns";
 import { useCalendar } from "../../hooks/useCalendar";
+import { Event } from "../../types/Event";
+import { ENUM_MODAL_ADD_EVENT } from "../../enums/modals";
 
-const CalendarHeader = () => {
+const CalendarHeader = ({
+  handleOpenDialog,
+}: {
+  handleOpenDialog: (data: Event | null, type: string) => void;
+}) => {
   const { currentDate, previousWeek, nextWeek, goToToday } = useCalendar();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -78,6 +84,7 @@ const CalendarHeader = () => {
         </Box>
 
         <Button
+          onClick={() => handleOpenDialog(null, ENUM_MODAL_ADD_EVENT)}
           variant="contained"
           color="primary"
           startIcon={<Add />}

@@ -1,0 +1,2 @@
+export const ENUM_MODAL_ADD_EVENT = "ADD_EVENT";
+export const ENUM_MODAL_UPDATE_EVENT = "UPDATE_EVENT";

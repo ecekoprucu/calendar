@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from "react";
-import { Box, Typography, Paper, Popover } from "@mui/material";
+import { Box, Typography, Paper, Popover, Button } from "@mui/material";
 import { Event } from "../../types/Event";
 import {
   format,
@@ -10,6 +10,7 @@ import {
   isBefore,
   endOfDay,
 } from "date-fns";
+import { ENUM_MODAL_UPDATE_EVENT } from "../../enums/modals";
 
 interface EventItemProps {
   event: Event & {
@@ -18,9 +19,10 @@ interface EventItemProps {
   };
   day: Date;
   timeSlots: string[];
+  handleOpenDialog: (data: Event | null, type: string) => void;
 }
 
-const EventItem = ({ event, day }: EventItemProps) => {
+const EventItem = ({ event, day, handleOpenDialog }: EventItemProps) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
@@ -154,6 +156,12 @@ const EventItem = ({ event, day }: EventItemProps) => {
               {event.description}
             </Typography>
           )}
+          <Button
+            onClick={() => handleOpenDialog(event, ENUM_MODAL_UPDATE_EVENT)}
+            variant="contained"
+          >
+            Update Event
+          </Button>
         </Box>
       </Popover>
     </>
