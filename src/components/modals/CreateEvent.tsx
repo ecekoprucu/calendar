@@ -8,6 +8,7 @@ import {
   Input,
   InputLabel,
   Stack,
+  TextFieldProps,
   Typography,
 } from "@mui/material";
 import { useCalendar } from "../../hooks/useCalendar";
@@ -99,7 +100,13 @@ const CreateEventModal = ({ onClose }: CreateEventModalProps) => {
             <DateTimePicker
               onChange={(date) => changeFormValues("start", date)}
               value={formValues.start}
-              slotProps={{ textField: { size: "small", fullWidth: true } }}
+              slotProps={{
+                textField: {
+                  size: "small",
+                  fullWidth: true,
+                  "data-testid": "startDate",
+                } as Partial<TextFieldProps>,
+              }}
             />
           </Box>
           <Box>
@@ -107,9 +114,16 @@ const CreateEventModal = ({ onClose }: CreateEventModalProps) => {
               End Date
             </Typography>
             <DateTimePicker
+              data-testid="endDate"
               onChange={(date) => changeFormValues("end", date)}
               value={formValues.end}
-              slotProps={{ textField: { size: "small", fullWidth: true } }}
+              slotProps={{
+                textField: {
+                  size: "small",
+                  fullWidth: true,
+                  "data-testid": "startDate",
+                } as Partial<TextFieldProps>,
+              }}
             />
           </Box>
           <Box>
