@@ -38,3 +38,23 @@ test("renders Add New Event modal", () => {
 
   expect(screen.getByText("Add New Event"));
 });
+
+test("selects correct start date", () => {
+  const createButton = screen.getByText("Create");
+
+  fireEvent.click(createButton);
+
+  const startDateInput = screen.getByTestId("startDate").querySelector("input");
+
+  if (!startDateInput) {
+    throw new Error("Input not found inside startDate picker");
+  }
+
+  fireEvent.change(startDateInput, {
+    target: {
+      value: "07/18/2025 10:17 AM",
+    },
+  });
+
+  expect(startDateInput.value).toBe("07/18/2025 10:17 AM");
+});

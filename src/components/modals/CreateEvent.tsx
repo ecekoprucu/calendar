@@ -121,7 +121,7 @@ const CreateEventModal = ({ onClose }: CreateEventModalProps) => {
                 textField: {
                   size: "small",
                   fullWidth: true,
-                  "data-testid": "startDate",
+                  "data-testid": "endDate",
                 } as Partial<TextFieldProps>,
               }}
             />
